@@ -1,5 +1,5 @@
 export const state: () => any = (): any => ({
-  hoge: 'dddd',
+  hoge: '',
   fuga: 0,
 });
 
