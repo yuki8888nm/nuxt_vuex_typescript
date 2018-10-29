@@ -1,26 +1,28 @@
-export const state: () => any = (): any => ({
+import { RootState, RootActionPayloads, RootMutationPayloads, RootGetterResults, Mutations, Actions, Getters } from './index.d'
+
+export const state: () => RootState = (): RootState => ({
   hoge: '',
   fuga: 0,
 });
 
-export const mutations: any = {
-  rootChangeHoge(state, payload) {
+export const mutations: Mutations<RootState, RootMutationPayloads> = {
+  changeRootHoge(state, payload) {
     state.hoge = payload.value;
   },
-  rootChangeFuga(state, payload) {
+  changeRootFuga(state, payload) {
     state.fuga = payload.value;
   },
 };
 
-export const actions: any = {
+export const actions: Actions<RootState, RootMutationPayloads, RootActionPayloads, RootGetterResults> = {
   save({ commit }, payload) {
-    commit('rootChangeHoge', { value: payload.hoge });
-    commit('rootChangeFuga', { value: payload.fuga });
+    commit('changeRootHoge', { value: payload.hoge });
+    commit('changeRootFuga', { value: payload.fuga });
   },
 };
 
-export const getters: any = {
-  halfFuga(state) {
-    return state.fuga / 2;
+export const getters: Getters<RootState, RootGetterResults> = {
+  doubleFuga(state) {
+    return state.fuga * 2;
   },
 };

@@ -1,30 +1,35 @@
-export const state: () => any = (): any => ({
+import { State, ActionPayloads, MutationPayloads, GetterResults, Mutations, Actions, Getters } from '../index.d'
+
+export const state: () => State = (): State => ({
   hoge: '',
   fuga: 0,
 });
 
-export const mutations: any = {
+export const mutations: Mutations<State, MutationPayloads> = {
   changeHoge(state, payload) {
     state.hoge = payload.value;
   },
   changeFuga(state, payload) {
     state.fuga = payload.value;
   },
+  incrementFuga(state) {
+    state.fuga++;
+  }
 };
 
-export const actions: any = {
+export const actions: Actions<State, MutationPayloads, ActionPayloads, GetterResults> = {
   mdSave({ commit }, payload) {
     commit('changeHoge', { value: payload.hoge });
     commit('changeFuga', { value: payload.fuga });
   },
   mdSaveRoot({ commit }, payload) {
-    commit('rootChangeHoge', { value: payload.hoge }, { root: true });
-    commit('rootChangeFuga', { value: payload.fuga }, { root: true });
+    commit('changeRootHoge', { value: payload.hoge }, { root: true });
+    commit('changeRootFuga', { value: payload.fuga }, { root: true });
   }
 };
 
-export const getters: any = {
-  halfFuga(state) {
-    return state.fuga / 2;
+export const getters: Getters<State, GetterResults> = {
+  doubleFuga(state) {
+    return state.fuga * 2;
   },
 };
