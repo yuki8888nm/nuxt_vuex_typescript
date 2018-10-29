@@ -1,3 +1,6 @@
-# Using typescript within nuxt.js
+### SETUP
 
-https://github.com/johnlindquist/nuxt-typescript-starter/
+``` bash
+$ npm install # Or yarn install
+
+$ npm run dev
