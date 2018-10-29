@@ -8,7 +8,7 @@ export const mutations: any = {
     state.hoge = payload.value;
   },
   changeFuga(state, payload) {
-    state.fuga = payload.fuga;
+    state.fuga = payload.value;
   },
 };
 

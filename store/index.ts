@@ -8,14 +8,14 @@ export const mutations: any = {
     state.hoge = payload.value;
   },
   rootChangeFuga(state, payload) {
-    state.fuga = payload.fuga;
+    state.fuga = payload.value;
   },
 };
 
 export const actions: any = {
   save({ commit }, payload) {
     commit('rootChangeHoge', { value: payload.hoge });
-    commit('rootCchangeFuga', { value: payload.fuga });
+    commit('rootChangeFuga', { value: payload.fuga });
   },
 };
 
